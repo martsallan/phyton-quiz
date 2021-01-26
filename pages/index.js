@@ -1,12 +1,13 @@
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
 import db from '../db.json';
-import Widget from '../src/components/Widget'
-import QuizLogo from '../src/components/QuizLogo'
-import QuizBackground from '../src/components/QuizBackground'
-import Footer from '../src/components/Footer'
-import GitHubCorner from '../src/components/GitHubCorner'
-import Head from 'next/head'
-import Link from 'next/link'
+import Widget from '../src/components/Widget';
+import QuizLogo from '../src/components/QuizLogo';
+import QuizBackground from '../src/components/QuizBackground';
+import Footer from '../src/components/Footer';
+import GitHubCorner from '../src/components/GitHubCorner';
 
 // const BackgroundImage = styled.div`
 //   background-image: url(${db.bg});
@@ -26,27 +27,18 @@ export const QuizContainer = styled.div`
   }
 `;
 
-const Linker = styled.footer`
-  a {
-    color: white;
-    text-decoration: underline;
-    transition: .3s;
-    &:hover,
-    &:focus {
-      opacity: .5;
-    }
-  }
-`
-
 export default function Home() {
+  const router = useRouter();
+  const [name, setName] = React.useState('');
+
   return (
     <>
       <Head>
         <title>Phyton Quiz</title>
         <meta property="og:title" content="Phyton Quiz" key="title" />
-        <meta property="og:image" content={db.bg}/>
-        <meta property="og:image:type" content="image/jpg"/>
-      </Head>   
+        <meta property="og:image" content={db.bg} />
+        <meta property="og:image:type" content="image/jpg" />
+      </Head>
       <QuizBackground backgroundImage={db.bg}>
         <QuizContainer>
           <QuizLogo />
@@ -56,13 +48,26 @@ export default function Home() {
             </Widget.Header>
             <Widget.Content>
               <p>{db.description}</p>
-              <p>
-                <Linker>
-                  <Link href="/quiz" replace>
-                    <a>Iniciar quiz</a>
-                  </Link>
-                </Linker>
-              </p>
+              <form onSubmit={function (infosDoEvento) {
+                infosDoEvento.preventDefault();
+                router.push(`/quiz?name=${name}`);
+                // router
+              }}
+              >
+                <input
+                  onChange={function (infosDoEvento) {
+                    // State
+                    // name = infosDoEvento.target.value;
+                    setName(infosDoEvento.target.value);
+                  }}
+                  placeholder="Diz aí seu nome para jogar :)"
+                />
+                <button type="submit" disabled={name.length === 0}>
+                  Jogar
+                  {' '}
+                  {name}
+                </button>
+              </form>
             </Widget.Content>
           </Widget>
 

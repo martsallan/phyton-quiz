@@ -1,12 +1,13 @@
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
+import Head from 'next/head';
+import Link from 'next/link';
 import db from '../db.json';
-import Widget from '../src/components/Widget'
-import QuizLogo from '../src/components/QuizLogo'
-import QuizBackground from '../src/components/QuizBackground'
-import Footer from '../src/components/Footer'
-import GitHubCorner from '../src/components/GitHubCorner'
-import Head from 'next/head'
-import Link from 'next/link'
+import Widget from '../src/components/Widget';
+import QuizLogo from '../src/components/QuizLogo';
+import QuizBackground from '../src/components/QuizBackground';
+import Footer from '../src/components/Footer';
+import GitHubCorner from '../src/components/GitHubCorner';
 
 // const BackgroundImage = styled.div`
 //   background-image: url(${db.bg});
@@ -36,7 +37,7 @@ const Linker = styled.footer`
       opacity: .5;
     }
   }
-`
+`;
 
 export default function Home() {
   return (
@@ -44,9 +45,9 @@ export default function Home() {
       <Head>
         <title>Phyton Quiz</title>
         <meta property="og:title" content="Phyton Quiz" key="title" />
-        <meta property="og:image" content={db.bg}/>
-        <meta property="og:image:type" content="image/jpg"/>
-      </Head>   
+        <meta property="og:image" content={db.bg} />
+        <meta property="og:image:type" content="image/jpg" />
+      </Head>
       <QuizBackground backgroundImage={db.bg}>
         <QuizContainer>
           <QuizLogo />
@@ -59,6 +60,7 @@ export default function Home() {
               <p>
                 <Linker>
                   <Link href="/" replace>
+                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                     <a>Voltar para home</a>
                   </Link>
                 </Linker>
