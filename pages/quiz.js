@@ -58,19 +58,11 @@ export default function Home() {
               <p>{db.description}</p>
               <p>
                 <Linker>
-                  <Link href="/quiz" replace>
-                    <a>Iniciar quiz</a>
+                  <Link href="/" replace>
+                    <a>Voltar para home</a>
                   </Link>
                 </Linker>
               </p>
-            </Widget.Content>
-          </Widget>
-
-          <Widget>
-            <Widget.Content>
-              <h1>Quizes da Galera</h1>
-
-              <p>lorem ipsum dolor sit amet...</p>
             </Widget.Content>
           </Widget>
           <Footer />
