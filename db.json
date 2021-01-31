@@ -28,7 +28,7 @@
       }
     ],
     "external": [
-      ""
+      "https://hogwarts-quiz.juliocarvalhos.vercel.app/"
     ],
     "theme": {
       "colors": {
